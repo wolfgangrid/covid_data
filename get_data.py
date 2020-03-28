@@ -24,7 +24,7 @@ def get_data():
     #countries = ["Austria","Belgium","Denmark","France","Germany","Italy","Netherlands","Spain","Sweden",
      #           "United Kingdom","US"]
     #regions = ["California","New York","Washington","Hubei","United Kingdom"]
-    regions = ["Austria","United Kingdom","US","China Hubei","Italy","Germany","US","Spain"]
+    regions = ["Austria","United Kingdom","US","China Hubei","Italy","Germany","US","Spain","Korea, South"]
 
     dta = {}
     dta["cases"] = {}
