@@ -12,14 +12,8 @@ def get_data():
 
     #"latest available date: " + dates[-1]
 
-    dta_cases.insert(0,"region","")
-    dta_deaths.insert(0,"region","")
-
-    dta_cases["region"].loc[dta_cases["Province/State"].notna()] = dta_cases["Country/Region"].loc[dta_cases["Province/State"].notna()] +" "+ dta_cases["Province/State"].loc[dta_cases["Province/State"].notna()]
-    dta_cases["region"].loc[dta_cases["Province/State"].isna()] = dta_cases["Country/Region"].loc[dta_cases["Province/State"].isna()]
-
-    dta_deaths["region"].loc[dta_deaths["Province/State"].notna()] = dta_deaths["Country/Region"].loc[dta_deaths["Province/State"].notna()] +" "+ dta_deaths["Province/State"].loc[dta_deaths["Province/State"].notna()]
-    dta_deaths["region"].loc[dta_deaths["Province/State"].isna()] = dta_deaths["Country/Region"].loc[dta_deaths["Province/State"].isna()]
+    dta_cases.insert(0,"region",dta_cases.apply(lambda x: x['Country/Region'] if pd.isnull(x['Province/State']) else x['Country/Region'] + " " + x['Province/State'],axis=1))
+    dta_deaths.insert(0,"region",dta_deaths.apply(lambda x: x['Country/Region'] if pd.isnull(x['Province/State']) else x['Country/Region'] + " " + x['Province/State'],axis=1))
 
     #countries = ["Austria","Belgium","Denmark","France","Germany","Italy","Netherlands","Spain","Sweden",
      #           "United Kingdom","US"]
